@@ -14,8 +14,7 @@ qc.had();
 //qc.read();
 qc.had();
 var output = qc.read();
-qc.print(output);
-qc.print('\n');
+qc.print(output + '\n');
 ```
 
 ### Exp 2-2
@@ -31,6 +30,5 @@ a.had();
 b.exchange(a);
 b.had();
 var output = b.read();
-qc.print(output);
-qc.print('\n');
+qc.print(output + '\n');
 ```

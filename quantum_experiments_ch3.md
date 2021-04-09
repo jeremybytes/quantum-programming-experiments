@@ -38,15 +38,32 @@ qc.print('|' + q3.read() + '|' + q2.read() + '|' + q1.read() + '|  ' + output + 
 Same as above, but for PHASE. Run the program, then put the marker before the PHASE and after the PHASE to see the circles that are impacted. Try for q1, q2, and q3 (individually).  
 
 ```js
+qc_options.book_render = true;
 qc.reset(3);
 qc.write(0);
 var q1 = qint.new(1, 'q1');
 var q2 = qint.new(1, 'q2');
 var q3 = qint.new(1, 'q3');
 qc.had();
-//q1.phase(45);
+q1.phase(45);
 //q2.phase(45);
-q3.phase(45);
+//q3.phase(45);
 var output = qc.read();
 qc.print('|' + q3.read() + '|' + q2.read() + '|' + q1.read() + '|  ' + output + '\n');
 ```
+
+### Exp 3-4
+Bell pair
+entaglement using CNOT
+
+```js
+qc.reset(2);
+var a = qint.new(1, 'a');
+var b = qint.new(1, 'b');
+qc.write(0);
+a.had();
+b.cnot(a);
+var a_result = a.read();
+var b_result = b.read();
+```
+
