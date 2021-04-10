@@ -95,7 +95,7 @@ qc.read();
 ```
 
 ### Exp 3-6
-CCNOT
+CCNOT  
 Run the following and step through the diagram to see how the circles swap when using NOT, CNOT, and CCNOT.  
 *Note: I coulddn't figure out how to do the control for CCNOT with the aliases (q1,q2,q3), so I used hex notation throughout.*  
 q1 = 0x1  
