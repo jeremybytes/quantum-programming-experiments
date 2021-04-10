@@ -4,8 +4,8 @@
 Note: Copy and paste the experiments into the quantum simulator at [https://oreilly-qc.github.io](https://oreilly-qc.github.io).  
 
 ### Exp 2-1
-had / had = original  
-had / read / had = destroys original  
+HAD / HAD = original  
+HAD / read / HAD = destroys original  
 
 ```js
 qc.reset(1);
@@ -18,7 +18,7 @@ qc.print(output + '\n');
 ```
 
 ### Exp 2-2
-had + exchange + had to get original value  
+HAD + exchange + HAD to get original value somewhere else
 
 ```js
 qc.reset(2);
@@ -31,4 +31,40 @@ b.exchange(a);
 b.had();
 var output = b.read();
 qc.print(output + '\n');
+```
+
+### Exp 2-3
+PHASE(180) = HAD NOT HAD
+
+```js
+qc.reset(1);
+qc.write(1);
+
+// this...
+qc.phase(180);
+
+// ... is the same as this
+//qc.had();
+//qc.not();
+//qc.had()
+
+var output = qc.read();
+```
+
+### Exp 2-4
+NOT = HAD PHASE(180) HAD
+
+```js
+qc.reset(1);
+qc.write(0);
+
+// this...
+qc.not();
+
+// ... is the same as this
+//qc.had();
+//qc.phase(180);
+//qc.had()
+
+var output = qc.read();
 ```
