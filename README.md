@@ -5,7 +5,9 @@ I'm going through this book as part of a book club started by Lynn Langit and I.
 
 ## Resources
 * [QCEngine Simulator](https://oreilly-qc.github.io/)  
-You can run the experiments by pasting the code into the browser-based simulator.
+You can run the experiments by pasting the code into the browser-based simulator.  
+* [QCEngine Cheetsheet](https://oreilly-qc.github.io/docs/build/cheatsheet.html)  
+Documentation for the commands available in the QCEngine.  
 * [Lynn Langit's learning-quantum repository](https://github.com/lynnlangit/learning-quantum)  
 Resources for the Book Club  
 * [Programming Quantum Computers](https://www.oreilly.com/library/view/programming-quantum-computers/9781492039679/) (the book)  
