@@ -136,3 +136,153 @@ a.add(b);
 qc.label('');
 qc.nop();
 ```
+
+### Exp 5-7
+Reversible abs(a) with addition. This is the example from figure 5-18.  
+
+```js
+qc.reset(7);
+
+var b = qint.new(3, 'b');
+var a = qint.new(3, 'a');
+var scratch = qint.new(1, 'scratch');
+
+b.write(2);
+a.write(-3);
+
+qc.label('abs(a)');
+
+scratch.write(0);
+qc.cnot(scratch, 0x20);
+qc.cnot(a, scratch);
+qc.cnot(0x20, 0x8|0x10|0x40);
+qc.cnot(0x10, 0x8|0x20|0x40);
+qc.cnot(0x8, scratch);
+
+qc.label();
+
+//a.read();
+
+qc.label('b+=abs(a)');
+
+qc.cnot(0x4, 0x1|0x2|0x8);
+qc.cnot(0x2, 0x1|0x8);
+qc.cnot(0x1, 0x8);
+qc.cnot(0x4, 0x2|0x10);
+qc.cnot(0x2, 0x10);
+qc.cnot(0x4, 0x20);
+
+qc.label();
+
+qc.label('uncompute abs(a)');
+
+qc.cnot(0x8, scratch);
+qc.cnot(0x10, 0x8|0x20|0x40);
+qc.cnot(0x20, 0x8|0x10|0x40);
+qc.cnot(a, scratch);
+qc.cnot(scratch, 0x20);
+
+qc.label();
+
+b.read();
+a.read();
+scratch.read();
+```
+
+### Exp 5-8
+Reversible abs(a) with XOR. This is the example from figure 5-19.  
+
+```js
+qc.reset(7);
+
+var b = qint.new(3, 'b');
+var a = qint.new(3, 'a');
+var scratch = qint.new(1, 'scratch');
+
+b.write(2);
+a.write(-3);
+
+qc.label('abs(a)');
+
+scratch.write(0);
+qc.cnot(scratch, 0x20);
+qc.cnot(a, scratch);
+qc.cnot(0x20, 0x8|0x10|0x40);
+qc.cnot(0x10, 0x8|0x20|0x40);
+qc.cnot(0x8, scratch);
+
+qc.label();
+
+//a.read();
+
+qc.label('b^=abs(a)');
+
+qc.cnot(0x1, 0x8);
+qc.cnot(0x2, 0x10);
+qc.cnot(0x4, 0x20);
+
+qc.label();
+
+qc.label('uncompute abs(a)');
+
+qc.cnot(0x8, scratch);
+qc.cnot(0x10, 0x8|0x20|0x40);
+qc.cnot(0x20, 0x8|0x10|0x40);
+qc.cnot(a, scratch);
+qc.cnot(scratch, 0x20);
+
+qc.label();
+
+b.read();
+a.read();
+scratch.read();
+```
+
+### Exp 5-9
+Phase preservation from Figure 5-20.  
+
+```js
+qc_options.color_by_phase = true;qc.reset(4);
+
+var a = qint.new(3, 'a');
+var scratch = qint.new(1, 'scratch');
+
+a.write(0);
+a.had();
+
+qc.label('abs(a)');
+
+scratch.write(0);
+qc.cnot(scratch, 0x4);
+qc.cnot(a, scratch);
+qc.cnot(0x4, 0x1|0x2|0x8);
+qc.cnot(0x2, 0x1|0x08);
+qc.cnot(0x1, scratch);
+
+qc.label();
+
+qc.nop();
+
+qc.label('Z if abs(a) ==1');
+
+qc.not(0x2|0x4);
+qc.cphase(180, a);
+qc.not(0x2|0x4);
+
+qc.label();
+
+qc.nop();
+
+qc.label('uncompute abs(a)');
+
+qc.cnot(0x1, scratch);
+qc.cnot(0x2, 0x1|0x08);
+qc.cnot(0x4, 0x1|0x2|0x8);
+qc.cnot(a, scratch);
+qc.cnot(scratch, 0x4);
+
+qc.label();
+
+a.read();
+scratch.read();
+```
