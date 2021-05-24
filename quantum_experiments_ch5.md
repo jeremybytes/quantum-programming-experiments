@@ -67,13 +67,13 @@ qc.reset(4);
 var a = qint.new(4, 'a');
 a.write(3); // binary 0011
 
-//a.add(1);
+//a.subtract(1);
 
-//a.add(2);
+//a.subtract(2);
 
-a.add(3);
+a.subtract(3);
 
-//a.add(4);
+//a.subtract(4);
 
 a.read();
 ```
