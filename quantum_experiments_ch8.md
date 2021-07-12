@@ -11,28 +11,28 @@ Eigenstate - special state where amplitude and phase remain unchanged after a "h
 qc.reset(1);
 qc.label('init');
 qc.write(0);
-qc.roty(-135);
+qc.roty(45);
 
 qc.nop();
 
-// State/phase remains unchanged after had
+// State remains unchanged after had
 qc.label('had');
 qc.had();
 ```
 
 ### Exp 8-2
-Eigenstate - same as above, except the phase is changed by the "had" - the amplitudes remain unchanged. (Eigenphase 180&deg;)
+Eigenstate - same as above, except the global phase is changed by the "had" - the amplitude and relative phase remain unchanged. (Eigenphase 180&deg;)
 
 ```js
 // Eigenstate (had)
 qc.reset(1);
 qc.label('init');
 qc.write(0);
-qc.roty(45);
+qc.roty(-135);
 
 qc.nop();
 
-// State remains unchanged after had
+// State/phase remains unchanged after had
 qc.label('had');
 qc.had();
 ```
@@ -54,7 +54,6 @@ qin.roty(-135);     // for eigenphase 0, use qin.roty(45)
 
 qc.label('phase estimation');
 phase_estimation(qin, qout, conditional_unitary);
-//qout.read();
 var output_value = qout.read();
 print_output_angle(output_value, qout.numBits);
 
