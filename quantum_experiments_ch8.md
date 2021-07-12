@@ -15,7 +15,7 @@ qc.roty(45);
 
 qc.nop();
 
-// State remains unchanged after had
+// State & relative phase remain unchanged after had
 qc.label('had');
 qc.had();
 ```
@@ -32,7 +32,7 @@ qc.roty(-135);
 
 qc.nop();
 
-// State/phase remains unchanged after had
+// State & relative phase remain unchanged after had
 qc.label('had');
 qc.had();
 ```
