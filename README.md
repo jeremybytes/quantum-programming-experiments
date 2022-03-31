@@ -4,6 +4,8 @@ This repo primarily contains Jeremy's experiments for the QCEngine quantum simul
 I'm going through this book as part of a book club started by Lynn Langit and I. More information about the club and recordings are available from Lynn's repository.
 
 ## Resources
+* [Programming Quantum Computers Book Club on YouTube](https://www.youtube.com/channel/UCSmWWIRx1dT2QO5gcCTjKYA)  
+Recordings of the book club meetings.
 * [QCEngine Simulator](https://oreilly-qc.github.io/)  
 You can run the experiments by pasting the code into the browser-based simulator.  
 * [QCEngine Cheetsheet](https://oreilly-qc.github.io/docs/build/cheatsheet.html)  
